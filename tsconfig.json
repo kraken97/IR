@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "alwaysStrict": true,
+        "outDir": "./js",
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "watch": true
+    }
+}

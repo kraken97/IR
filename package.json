@@ -1,0 +1,20 @@
+{
+  "name": "is",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "\"tsc\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^7.0.0",
+    "du": "^0.1.0",
+    "filesize": "^3.4.1",
+    "rxjs": "^5.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^2.1.5"
+  }
+}

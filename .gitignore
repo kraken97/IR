@@ -1,0 +1,7 @@
+node_modules
+.vscode
+result.json
+words.json
+js
+**/*.map
+**.log
