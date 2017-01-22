@@ -7,7 +7,6 @@
         "alwaysStrict": true,
         "outDir": "./js",
         "noImplicitThis": true,
-        "noImplicitReturns": true,
-        "watch": true
+        "noImplicitReturns": true
     }
 }
