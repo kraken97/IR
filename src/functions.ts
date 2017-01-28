@@ -1,8 +1,10 @@
 import { createInterface } from 'readline';
 import { Observable } from 'rxjs';
+import * as fs from 'fs';
 
 
-export const createRxFs = (fileName): Observable<string> => {
+
+export const createRxFs = (fileName, s?): Observable<string> => {
   const stream = createInterface({ input: fs.createReadStream(fileName) })
   return Observable
     .fromEvent(stream, 'line')
@@ -10,9 +12,8 @@ export const createRxFs = (fileName): Observable<string> => {
 }
 
 export const parseWord = (word) =>
-  word.replace(/[ .,?!]/g, '')
-    .trim()
-    .toLowerCase();
+  word.replace(/[ .,?!]/g, '').trim();
+
 
 export const lineToWords = (line) =>
   Observable
@@ -20,9 +21,9 @@ export const lineToWords = (line) =>
     .map(parseWord);
 
 export const createWordStream = (line, i) =>
-  lineToWords(line).map(word => ({ word, index: i }));
+  lineToWords(line.toLowerCase()).map(word => ({ word, index: i }));
 
 export const createFileStream = (file, i) =>
-  createRxFs(file).flatMap(createWordStream).map(el => ({ ...el, file }));
+  createRxFs(file).flatMap(createWordStream).map(el => ({ ...el, file: i }));
 
 

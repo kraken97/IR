@@ -5,24 +5,26 @@ import { createFileStream } from './functions';
 
 const FILES_DIR = '../files/';
 const result = '../result.json';
+const MAX_FILES = 10;
 
 const files = Observable
-  .range(0, 10)
+  .range(0, MAX_FILES)
   .map(el => FILES_DIR + 'book' + el + '.txt');
 
 const res = files
   .flatMap(createFileStream)
-  .groupBy(el => el.word, el => el)
-  .share()
+  .groupBy(el => el.word, el => el.file)
+  .map(el=> ({key:el.key,  val : el.distinct()}))
 
-const array = res.flatMap(el => el)
-  .toArray();
+const qq = res
+  .flatMap((el:any) => el.val.toArray().map(e=> ([el.key , e])))
+  .reduce((acc:any,el)=>{
+    acc[el[0]] = el[1];
+    return acc;
+  },{})
 
-console.time('t');
-array.zip(res.count(), (collection, uniqueCount) => ({ collection, uniqueCount }))
-  .subscribe((el) => {
-    console.log('collections size', el.collection.length);
-    console.log('unique count', el.uniqueCount)
-    console.timeEnd('t');
-    fs.writeFile(result, JSON.stringify(el.collection));
-  })
+console.time("t")
+qq.subscribe(el => {
+  console.timeEnd("t");
+  fs.writeFile('../files.json', JSON.stringify(el));
+})
