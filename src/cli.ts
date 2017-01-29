@@ -9,7 +9,7 @@ import { RES_DIR } from './app';
 const createOperators = words => {
     return {
         and: (wordA, wordB) => set.and(new Set(words[wordA]), new Set(words[wordB])),
-        or: (wordA, wordB) => set.or(words[wordA], words[wordB]),
+        or: (wordA, wordB) => set.or(new Set(words[wordA]), new Set(words[wordB])),
         not: word => set.not(new Set(words[word]))
     }
 }
