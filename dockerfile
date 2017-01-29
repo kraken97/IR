@@ -1,2 +1,5 @@
 FROM node
-WORKDIR /var
+WORKDIR /home
+COPY ./ /home
+RUN npm build
+RUN node ./js/cli.js

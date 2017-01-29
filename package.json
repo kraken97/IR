@@ -16,6 +16,7 @@
     "du": "^0.1.0",
     "event-stream": "^3.3.4",
     "filesize": "^3.4.1",
+    "most": "^1.2.1",
     "rxjs": "^5.0.3"
   },
   "devDependencies": {

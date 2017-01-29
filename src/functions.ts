@@ -1,6 +1,7 @@
 import { createInterface } from 'readline';
 import { Observable } from 'rxjs';
 import * as fs from 'fs';
+import { MAX_FILES } from './app';
 
 
 
@@ -26,4 +27,10 @@ export const createWordStream = (line, i) =>
 export const createFileStream = (file, i) =>
   createRxFs(file).flatMap(createWordStream).map(el => ({ ...el, file: i }));
 
-
+export const toBoolArray  = ( array: number[] ) => {
+  const  res = Array(MAX_FILES).fill(0);
+  array.forEach((_,i) =>  {
+    res[i]=1;
+  });
+  return res;
+}

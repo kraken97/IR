@@ -2,6 +2,7 @@ import { createInterface } from 'readline';
 import { Observable } from 'rxjs';
 import * as fs from 'fs';
 import * as set from './set-operations';
+import { RES_DIR } from './app';
 
 const andOperator = words => (wordA, wordB) =>  set.and(new Set(words[wordA]), new Set(words[wordB]));
 const orOperator =  words =>  (wordA, wordB) =>  set.or(words[wordA],words[wordB])
@@ -15,7 +16,9 @@ const createOperators = words =>  {
     }
 }
 
-const readFile= fs.createReadStream('../files.json');
+
+
+const readFile= fs.createReadStream(RES_DIR);
 const con = createInterface({ input: process.stdin, output: process.stdout });
 
 const consoleStream = Observable
