@@ -26,3 +26,8 @@ format for saving files info :
 repo url https://github.com/kraken97/IR
 
 you can download  latest zip on releases page.
+
+
+##
+for storing inverted index i use the save format  - JSON
+with 5 mb start files we have only 500kb iverted index and  1.1 mb matrix 
