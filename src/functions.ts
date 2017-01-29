@@ -4,7 +4,6 @@ import * as fs from 'fs';
 import { MAX_FILES } from './app';
 
 
-
 export const createRxFs = (fileName, s?): Observable<string> => {
   const stream = createInterface({ input: fs.createReadStream(fileName) })
   return Observable
@@ -14,7 +13,6 @@ export const createRxFs = (fileName, s?): Observable<string> => {
 
 export const parseWord = (word) =>
   word.replace(/[ .,?!]/g, '').trim();
-
 
 export const lineToWords = (line) =>
   Observable
@@ -27,10 +25,10 @@ export const createWordStream = (line, i) =>
 export const createFileStream = (file, i) =>
   createRxFs(file).flatMap(createWordStream).map(el => ({ ...el, file: i }));
 
-export const toBoolArray  = ( array: number[] ) => {
-  const  res = Array(MAX_FILES).fill(0);
-  array.forEach((_,i) =>  {
-    res[i]=1;
+export const toBoolArray = (array: number[]) => {
+  const res = Array(MAX_FILES).fill(0);
+  array.forEach((_, i) => {
+    res[i] = 1;
   });
   return res;
 }

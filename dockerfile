@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /home
 COPY ./ /home
-RUN npm build
-RUN node ./js/cli.js
+WORKDIR /home/js
+RUN npm install
+RUN  npm run build

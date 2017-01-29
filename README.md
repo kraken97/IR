@@ -1,10 +1,10 @@
 ## run 
 npm install
+
 npm run build 
 
-// to index files
-node ./js/app.js
-// to run cli
+node ./js/app.json
+
 node ./js/cli.js
 
 ## cli
@@ -19,12 +19,10 @@ add("word",or("word1",not("word2")))
 format for saving files info :
 ```json
 {
-    ...,
-    ["word"]:[...filesIds],
-    ...
+    "word":[1,4,5,7,],
 }
 ```
 
 repo url https://github.com/kraken97/IR
 
-your can download  latest zip on releases page.
+you can download  latest zip on releases page.

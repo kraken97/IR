@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "start:app": "node app.js",
+    "start:cli": "node  cli.js",
+    "test": ""
   },
   "author": "",
   "license": "ISC",
