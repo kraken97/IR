@@ -22,7 +22,7 @@ export const createWordsStreamWithWordIndex = (data: string) =>
     .skip(1)
     .scan((acc, el) => ({
       word: el.word,
-      wordIndex: acc.wordIndex + acc.word.length + 1
+      wordIndex: acc.wordIndex + 1
     }))
     .map(el => ({ ...el, word: parseWord(el.word) }));
 
