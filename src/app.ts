@@ -1,44 +1,24 @@
 import { createInterface, ReadLine } from 'readline'
 import { Observable } from 'rxjs';
 import * as fs from 'fs';
-import { createFileStream, toBoolArray } from './functions';
+
+import { createFileStream } from './functions';
 
 
 export const RES_DIR = '../files.json';
-export const RES_DIR_BOOL = '../bool.json';
 export const MAX_FILES = 10;
+export const FILES_DIR = '../../files/';
 
-const FILES_DIR = '../files/';
-const result = '../result.json';
 
-const files = Observable
+export const files$ = Observable
   .range(0, MAX_FILES)
-  .map(el => FILES_DIR + 'book' + el + '.txt');
+  .map(el => FILES_DIR + 'book' + el + '.txt').share();
 
-const res = files
-  .flatMap(createFileStream)
+export const wordsStream$ = files$.flatMap(createFileStream).share();
+
+export const res$ = wordsStream$
   .groupBy(el => el.word, el => el.file)
   .flatMap((el: any) => el.distinct().toArray().map(e => [el.key, e]))
   .share()
 
-const bool = res
-  .reduce((acc: any, [word, val]) => {
-    acc[word] = toBoolArray(val);
-    return acc;
-  }, {})
 
-const index = res
-  .reduce((acc: any, [word, val]) => {
-    acc[word] = val;
-    return acc;
-  }, {})
-
-console.time("t")
-index.subscribe(el => {
-  console.timeEnd("t");
-  fs.writeFile(RES_DIR, JSON.stringify(el));
-})
-
-bool.subscribe(el => {
-  fs.writeFile(RES_DIR_BOOL, JSON.stringify(el));
-})

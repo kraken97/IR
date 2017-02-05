@@ -3,10 +3,13 @@
         "module": "commonjs",
         "target": "es6",
         "noImplicitAny": false,
-        "sourceMap": true,
-        "alwaysStrict": true,
+        "sourceMap": false,
         "outDir": "./js",
         "noImplicitThis": true,
         "noImplicitReturns": true
-    }
+    },
+    "exclude": [
+        "__tests__",
+        "node_modules"
+    ]
 }
