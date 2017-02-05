@@ -9,7 +9,7 @@ createWordStreamFromIndex('../../coord-index.json')
         const words = el.line.split(/ +/);
         const files = words.map(wordKey =>
             Object.keys(_.omit(el.words[wordKey], 'word'))).reduce((acc, el) => _.intersection(acc, el));
-
+            /// input  "to be or not to be" result  indexes of words in each files
         const res = files.map(file => {
             return words.reduce((acc, word) => {
                 acc[file] = _.union(el.words[word][file], acc[file]);
