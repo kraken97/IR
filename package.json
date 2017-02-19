@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mapred":"*",
     "@types/chai": "^3.4.34",
     "@types/event-stream": "^3.3.30",
     "@types/jest": "^16.0.4",
