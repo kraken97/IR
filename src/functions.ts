@@ -43,7 +43,7 @@ export const createWordStream = (line, i) =>
   lineToWords(line.toLowerCase()).map(word => ({ word, index: i }));
 
 export const createFileStream = (file, i) =>
-  createRxFs(file).flatMap(createWordStream).map(el => ({ ...el, file: i }));
+  createRxFs(file).flatMap(createWordStream).map(e => { return ({ word: e.word, file: i }) });
 
 export const mapReduce = (keySelector: string) => (acc: any, el: any) => {
   acc[el[keySelector]] = el;

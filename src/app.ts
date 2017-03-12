@@ -3,10 +3,11 @@ import { Observable } from 'rxjs';
 import * as fs from 'fs';
 
 import { createFileStream } from './functions';
+import * as glob from 'glob';
 
-
+export const FILES_LIST = glob.sync("../../files/**/*.txt");
 export const RES_DIR = '../files.json';
-export const MAX_FILES = 10;
+export const MAX_FILES = 4;
 export const FILES_DIR = '../../files/';
 
 
